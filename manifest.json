@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
 
-  "name": "Image Switcher",
-  "description": "Change all images in the tab!",
+  "name": "Voice Commander",
+  "description": "Navigate through websites.",
   "version": "1.0",
-
+  "default_locale": "en",
   "icons": {
     "48": "icon.png"
   },
