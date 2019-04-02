@@ -21,10 +21,24 @@ function triggerSpeechRecognizer(fn) {
   console.log("------speech recognizer is being triggered------");
   try {
     const recognition = new window.SpeechRecognition();
+    let finalTranscript = '';
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 10;
+    recognition.continuous = true;
 
     recognition.onresult = (event) => {
-      const speechToText = event.results[0][0].transcript;
-      console.info(speechToText);
+      let interimTranscript = '';
+      for (let i = event.resultIndex, len = event.results.length; i < len; i++) {
+        let transcript = event.results[i][0].transcript;
+        if (event.results[i].isFinal) {
+          console.log("---"+transcript+"---");
+          //finalTranscript += transcript;
+        } else {
+          //interimTranscript += transcript;
+        }
+      }
+      //console.log(finalTranscript);
+      //console.log(interimTranscript);
     }
     recognition.start();
 
